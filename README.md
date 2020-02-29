@@ -1,5 +1,15 @@
 # gtfs-lib [![Build Status](https://travis-ci.org/conveyal/gtfs-lib.svg?branch=master)](https://travis-ci.org/conveyal/gtfs-lib)
 
+## Unmaintained fork
+
+Added support for custom links.txt table. Build with:
+
+```
+mvn -Dmaven.javadoc.skip=true -Dmaven.test.skip=true package
+```
+
+#
+
 A library for loading and saving GTFS feeds of arbitrary size with disk-backed storage.
 
 Based on observations over several years of experience using the OneBusAway GTFS library (which is used by OpenTripPlanner), Conveyal created this new GTFS library to meet our current needs.

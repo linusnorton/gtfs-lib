@@ -64,6 +64,7 @@ public class GTFSFeed implements Cloneable, Closeable {
     public final Map<String, Route> routes;
     public final Map<String, Stop> stops;
     public final Map<String, Transfer> transfers;
+    public final Map<String, Link> links;
     public final BTreeMap<String, Trip> trips;
 
     public final Set<String> transitIds = new HashSet<>();
@@ -182,6 +183,7 @@ public class GTFSFeed implements Cloneable, Closeable {
         new ShapePoint.Loader(this).loadTable(zip);
         new Stop.Loader(this).loadTable(zip);
         new Transfer.Loader(this).loadTable(zip);
+        new Link.Loader(this).loadTable(zip);
         new Trip.Loader(this).loadTable(zip);
         new Frequency.Loader(this).loadTable(zip);
         new StopTime.Loader(this).loadTable(zip); // comment out this line for quick testing using NL feed
@@ -223,6 +225,7 @@ public class GTFSFeed implements Cloneable, Closeable {
             new Stop.Writer(this).writeTable(zip);
             new ShapePoint.Writer(this).writeTable(zip);
             new Transfer.Writer(this).writeTable(zip);
+            new Link.Writer(this).writeTable(zip);
             new Trip.Writer(this).writeTable(zip);
             new StopTime.Writer(this).writeTable(zip);
 
@@ -648,6 +651,7 @@ public class GTFSFeed implements Cloneable, Closeable {
         stop_times = db.getTreeMap("stop_times");
         frequencies = db.getTreeSet("frequencies");
         transfers = db.getTreeMap("transfers");
+        links = db.getTreeMap("links");
         stops = db.getTreeMap("stops");
         fares = db.getTreeMap("fares");
         services = db.getTreeMap("services");
